@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -168,7 +169,7 @@ private RecyclerView mRecyclerView;
             mCursor.moveToPosition(position);
             holder.titleView.setText(mCursor.getString(CategoryLoader.Query.NAME));
             holder.titleView.setContentDescription(mCursor.getString(CategoryLoader.Query.NAME));
-
+holder.catId.setText(mCursor.getString(CategoryLoader.Query._ID));
 //
 //            holder.titleView.setTypeface(Config.typefaceMedium);
 //            holder.subtitleView.setTypeface(Config.typefaceRegular);
@@ -195,7 +196,19 @@ private RecyclerView mRecyclerView;
 
                     Intent intent =  new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Category.buildCategoryUri(getItemId(holder.getAdapterPosition())));
+                    BidsViewFragment
+                            newFragment = BidsViewFragment.newInstance(holder.catId.getText().toString(),"");
 
+
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                    // Replace whatever is in the fragment_container view with this fragment,
+                    // and add the transaction to the back stack so the user can navigate back
+                    transaction.add( newFragment,"BidsView");
+                    transaction.addToBackStack(null);
+
+                    // Commit the transaction
+                    transaction.commit();
 //                    startActivity(new Intent(Intent.ACTION_VIEW,
 //                            ItemsContract.Items.buildItemUri(getItemId(holder.getAdapterPosition()))),bundle);
                 }
@@ -212,6 +225,7 @@ private RecyclerView mRecyclerView;
         public ImageView thumbnailView;
         public TextView titleView;
 
+        public TextView catId;
         public ViewGroup bottombar;
 
 
@@ -219,6 +233,9 @@ private RecyclerView mRecyclerView;
             super(view);
             thumbnailView = (ImageView) view.findViewById(R.id.thumbnail);
             titleView = (TextView) view.findViewById(R.id.article_title);
+
+
+            catId = (TextView) view.findViewById(R.id.catid);
             bottombar = (ViewGroup) view.findViewById(R.id.bottomBar);
 
 
@@ -229,6 +246,21 @@ private RecyclerView mRecyclerView;
         }
 
     }
+    OnFragmentInteractionListener mCallback;
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

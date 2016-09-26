@@ -12,8 +12,8 @@ public class BidsLoader extends CursorLoader {
         return new BidsLoader(context, ItemsContract.Bids.buildDirUri());
     }
 
-    public static BidsLoader newInstance(Context context) {
-        return new BidsLoader(context, ItemsContract.Bids.buildDirUri());
+    public static BidsLoader newInstance(Context context,int categoryId) {
+        return new BidsLoader(context, ItemsContract.Bids.buildItemUri(categoryId));
     }
 
     private BidsLoader(Context context, Uri uri) {

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -125,7 +126,7 @@ public class BidsViewFragment extends Fragment implements LoaderManager.LoaderCa
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        return BidsLoader.newInstance(getActivity());
+        return BidsLoader.newInstance(getActivity(), Integer.parseInt(mParam1));
 
     }
     @Override
