@@ -9,7 +9,7 @@ import app.com.product.auctionapp.R;
 
 public class ItemsDatabase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "auction.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     public ItemsDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -104,7 +104,7 @@ public class ItemsDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.BIDS);
         db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.ITEMS);
         db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.CATEGORY);
-       // db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.USERS);
+        db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.USERS);
         onCreate(db);
     }
 }
