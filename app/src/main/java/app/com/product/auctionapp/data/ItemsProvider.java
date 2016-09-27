@@ -169,10 +169,11 @@ public class ItemsProvider extends ContentProvider {
 		final List<String> paths = uri.getPathSegments();
 		switch (match) {
 			case USERS: {
+
 				return builder.table(Tables.USERS);
 			}
 			case ITEMS: {
-				return builder.table(Tables.ITEMS);
+				return builder.table(Tables.ITEMS +" i inner join "+Tables.CATEGORY+" c on c."+ItemsContract.Category._ID +" = i."+ItemsContract.Items.CATEGORYID);
 			}
 			case ITEMS__ID: {
 				final String _id = paths.get(1);
