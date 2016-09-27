@@ -10,7 +10,7 @@ import android.support.v4.content.CursorLoader;
  */
 public class CategoryLoader extends CursorLoader {
     public static CategoryLoader newAllArticlesInstance(Context context) {
-        return new CategoryLoader(context, ItemsContract.Items.buildDirUri());
+        return new CategoryLoader(context, ItemsContract.Category.buildDirUri());
     }
 
     public static CategoryLoader newInstance(Context context) {

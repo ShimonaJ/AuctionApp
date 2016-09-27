@@ -29,7 +29,12 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".CreateAuctionActivity"
+            android:label="@string/title_activity_create_auctionitem"
+            android:theme="@style/AppTheme" />
+
     </application>
 
 </manifest>

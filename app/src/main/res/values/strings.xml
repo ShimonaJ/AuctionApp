@@ -23,10 +23,11 @@
     <string name="action_settings">Settings</string>
     <string name="notification_auctionitem_post">Auction Item posted, this may take some time .</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_create_bid">Create Bid</string>
+    <string name="title_activity_create_auctionitem">Create Auction Item</string>
     <string name="action_create_auction_item">Submit</string>
     <string name="prompt_estimatedBid">Estimated Bid</string>
-<string name="prompt_title">Title</string>
+    <string name="prompt_title">Title</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_temp">TempActivity</string>
 </resources>

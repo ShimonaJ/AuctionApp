@@ -1,7 +1,7 @@
 package app.com.product.auctionapp.data;
 
 import android.content.Context;
-import android.content.CursorLoader;
+import android.support.v4.content.CursorLoader;
 import android.net.Uri;
 
 /**
@@ -15,7 +15,9 @@ public class ItemLoader extends CursorLoader {
     public static ItemLoader newInstanceForItemId(Context context, long itemId) {
         return new ItemLoader(context, ItemsContract.Items.buildItemUri(itemId));
     }
-
+    public static ItemLoader newInstanceForCategoryId(Context context, long categoryId) {
+        return new ItemLoader(context, ItemsContract.Items.buildItemUriByCategory(categoryId));
+    }
     private ItemLoader(Context context, Uri uri) {
         super(context, uri, Query.PROJECTION, null, null, ItemsContract.Items.DEFAULT_SORT);
     }

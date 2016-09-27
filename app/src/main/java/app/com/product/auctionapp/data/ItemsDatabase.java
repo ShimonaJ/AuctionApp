@@ -31,7 +31,7 @@ public class ItemsDatabase extends SQLiteOpenHelper {
                 + ItemsContract.ItemsColumns.ESTIMATED_BID + " FLOAT  NULL,"
                 + ItemsContract.ItemsColumns.SELLERID + " INTEGER NOT  NULL,"
 
-                + ItemsContract.ItemsColumns.WINNERID + " INTEGER NOT  NULL,"
+                + ItemsContract.ItemsColumns.WINNERID + " INTEGER   NULL,"
                 + ItemsContract.ItemsColumns.IMAGE + " TEXT  NULL,"
 
                 + ItemsContract.ItemsColumns.CREATEDON + " TEXT NULL ,"

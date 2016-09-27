@@ -179,7 +179,7 @@ public class ItemsProvider extends ContentProvider {
 				return builder.table(Tables.ITEMS).where(ItemsContract.Items._ID + "=?", _id);
 			}
 			case ITEMS_WHERE_CAT_ID: {
-				final String _id = paths.get(3);
+				final String _id = paths.get(2);
 				return builder.table(Tables.ITEMS).where(ItemsContract.Items.CATEGORYID + "=?", _id);
 			}
 			case ITEMS_WHERE_SELLER_ID: {

@@ -12,7 +12,7 @@ android:orientation="vertical"
         android:layout_height="wrap_content"
         >
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar" android:title="@string/title_activity_create_bid"
+            android:id="@+id/toolbar" android:title="@string/title_activity_create_auctionitem"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -26,50 +26,9 @@ android:orientation="vertical"
     <ProgressBar android:id="@+id/progress_bar" android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" android:orientation="vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        >
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/itemTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/prompt_title"
+    <fragment  android:id="@+id/fragment"
+        android:name="app.com.product.auctionapp.CreateAuctionItemFragment"
+        tools:layout="@layout/fragment_create_auction_item" android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true"/>
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/estimated_bid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/prompt_estimatedBid"
-
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true"/>
-        </android.support.design.widget.TextInputLayout>
-
-
-
-        <Button
-            android:id="@+id/create_auctionitem_btn"
-            style="?android:textAppearanceSmall"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/action_create_auction_item"
-            android:textStyle="bold"/>
-    </LinearLayout>
 </LinearLayout>

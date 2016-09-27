@@ -1,8 +1,10 @@
 package app.com.product.auctionapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -11,15 +13,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.TextView;
-
-public class MainActivity extends AppCompatActivity  implements BidCategoryFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity  implements AuctionItemCategoryFragment.OnFragmentInteractionListener
+{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -56,13 +55,31 @@ public class MainActivity extends AppCompatActivity  implements BidCategoryFragm
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Context context = getApplicationContext();
+                Intent intent = new Intent(context, CreateAuctionActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
 
     }
 
+    @Override
+    public void onFragmentInteraction(String catId) {
+        AuctionItemViewFragment
+                newFragment = AuctionItemViewFragment.newInstance(catId,"");
+
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        // Replace whatever is in the fragment_container view with this fragment,
+        // and add the transaction to the back stack so the user can navigate back
+        transaction.add( newFragment,"AuctionItemView");
+        transaction.addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,10 +103,6 @@ public class MainActivity extends AppCompatActivity  implements BidCategoryFragm
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
 
     /**
@@ -107,16 +120,16 @@ public class MainActivity extends AppCompatActivity  implements BidCategoryFragm
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch(position){
-                case 0: return BidCategoryFragment.newInstance("","");
+                case 1: return AuctionItemViewFragment.newInstance("","");
 
             }
-            return  BidCategoryFragment.newInstance("","");
+            return  AuctionItemViewFragment.newInstance("","");
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 3;
         }
 
         @Override
@@ -126,7 +139,8 @@ public class MainActivity extends AppCompatActivity  implements BidCategoryFragm
                     return "Latest Bids";
                 case 1:
                     return "Items Won";
-
+                case 2:
+                    return "My Bids";
             }
             return null;
         }

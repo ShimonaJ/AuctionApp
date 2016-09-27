@@ -78,7 +78,10 @@ public class ItemsContract {
 		public static Uri buildItemUri(long _id) {
 			return BASE_URI.buildUpon().appendPath("items").appendPath(Long.toString(_id)).build();
 		}
-
+		/** Matches: /items/category/[_id]/ */
+		public static Uri buildItemUriByCategory(long categoryId) {
+			return BASE_URI.buildUpon().appendPath("items").appendPath("category").appendPath(Long.toString(categoryId)).build();
+		}
         /** Read item ID item detail URI. */
         public static long getItemId(Uri itemUri) {
             return Long.parseLong(itemUri.getPathSegments().get(1));
