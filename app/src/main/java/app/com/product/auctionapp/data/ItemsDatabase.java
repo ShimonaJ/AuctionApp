@@ -4,10 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import app.com.product.auctionapp.R;
+
 
 public class ItemsDatabase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "auction.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public ItemsDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -79,22 +81,22 @@ public class ItemsDatabase extends SQLiteOpenHelper {
 
 
                 ItemsContract.Category.NAME + " TEXT NOT  NULL, " +
-                ItemsContract.Category.IMAGE + " TEXT NOT  NULL);";
+                ItemsContract.Category.IMAGE + " INT NOT  NULL);";
 
         db.execSQL(SQL_CREATE_BID_TABLE);
         db.execSQL(SQL_CREATE_CATEGORY_TABLE);
 
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Watches','watch')");
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Antique','watch')");
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Vaults','watch')");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Watches',"+ R.drawable.ic_watch_black_24dp+")");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Antique',"+ R.drawable.ic_watch_black_24dp+")");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Vaults',"+ R.drawable.ic_watch_black_24dp+")");
 
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Tech','watch')");
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Jewellery','watch')");
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Home Decor','watch')");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Tech',"+ R.drawable.ic_watch_black_24dp+")");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Jewellery',"+ R.drawable.ic_watch_black_24dp+")");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Home Decor',"+ R.drawable.ic_watch_black_24dp+")");
 
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Artfacts','watch')");
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Vehicles','watch')");
-        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Live Auctions','watch')");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Artfacts',"+ R.drawable.ic_watch_black_24dp+")");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Vehicles',"+ R.drawable.ic_watch_black_24dp+")");
+        db.execSQL("INSERT INTO "+ItemsProvider.Tables.CATEGORY+" ("+ItemsContract.Category.NAME+","+ItemsContract.Category.IMAGE+") values ('Live Auctions',"+ R.drawable.ic_watch_black_24dp+")");
     }
 
     @Override
@@ -102,7 +104,7 @@ public class ItemsDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.BIDS);
         db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.ITEMS);
         db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.CATEGORY);
-        db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.USERS);
+       // db.execSQL("DROP TABLE IF EXISTS " + ItemsProvider.Tables.USERS);
         onCreate(db);
     }
 }
